@@ -1,0 +1,100 @@
+---
+title: "Reproducible Research in R"
+date: 3 December 2024
+author: Prahalad Giridhar
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    toc_depth: 6
+---
+
+# Heading 1 {#heading-link}
+
+## Heading 2
+
+### Heading 3
+
+#### Heading 4
+
+##### Heading 5
+
+###### References
+And we can compare the size of the smallest heading to plain text.
+
+**Using two asterisks or two underscores on either side makes text bold.**
+
+There must be a space between lines otherwise they will join together.
+
+*A single asterisk or underscore on either side makes text italicized*
+
+Putting numbers between two carrots like ^100^ makes it superscript while putting it between two ~tildes~ makes it subscript.
+
+The number of empty lines between lines does not equate to actual empty lines as these need to be specificed using a backslash,
+\
+\
+\
+\
+like so.
+
+\
+[Putting text in square brackets followed by a tag in parenthesis is an internal hyperlink](#heading-link)
+
+[Or you can use the same syntax to link to an external address](https://www.sanger.ac.uk)
+
+You can put in footnotes by using square brackets[^1] 
+
+[^1]: and defining the footnote elsewhere in the document
+
+\
+
+#### Ordered lists
+
+1. Lists can be 
+2. made ordered
+3. by numbering them.
+    a. They can even have
+    b. sublists by using double-tab.
+4. For different items
+    i. you can use roman numerals as well
+    
+#### Unordered lists
+
+* Asterisk can be
+* used for bullet points
+    * and similar structure
+    * can be used for subpoints.
+* Switching between 
+    a. ordered and unordered
+    b. is also possible.
+    
+#### To-do lists
+
+- [x] \ \ To-do lists 
+- [ ] \ \ can be made using
+- [x] \ \ similar syntax.
+
+\
+
+#### Inserting images
+
+![Chart](../Downloads/reproducibility-graphic-online1.jpeg)
+
+\
+
+#### Tables
+
+|Use pipes to|create columns|
+|:------------:|:--------------:|
+|and rows can|also be added |
+|however this|is not used.  |
+
+\
+
+#### Blocks
+
+> A side carrot creates a text block
+
+```
+While triple backticks creates a code block
+```

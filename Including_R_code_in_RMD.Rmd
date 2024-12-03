@@ -1,0 +1,75 @@
+---
+title: "Including R code in RMD"
+author: "Prahalad Giridhar"
+date: "2024-12-03"
+output: html_document
+---
+
+```{r}
+plot(1:100)
+```
+
+```{r}
+download.file(url="https://raw.githubusercontent.com/cambiotraining/reproducibility-training/master/data/gapminder_data.csv", destfile="data/gapminder_data.csv")
+```
+
+```{r plot_red_hist, echo = FALSE}
+hist(rnorm(1000), col = 'red')
+```
+
+```{r include = FALSE}
+hist(rnorm(1000), col = 'blue')
+```
+
+```{r load-data, message = FALSE}
+#load tidyverse library
+library(tidyverse) # used for data manipulation
+library(rmarkdown) # used for paged_table function
+library(kableExtra) # used for table
+library(ggpubr) #used for ggarrange function 
+
+#read file into R
+pop_data <- read_csv("data/gapminder_data.csv")
+
+#create a table with data from European countries in 2007 showing the countries 
+#with the largest life expectancy at the top 
+euro_data_tbl <- pop_data %>% 
+                    filter(continent == "Europe" & year == 2007) %>% 
+                    select(-continent, -year) %>% 
+                    arrange(desc(lifeExp)) %>% 
+                    rename(Country = country, "Population Size" = pop, 
+                      "Life Expectancy" = lifeExp, "GDP" = gdpPercap)
+    
+```
+
+### Table
+
+```{r}
+euro_data_tbl %>% 
+  kbl() %>%
+  kable_styling(bootstrap_options = c("striped", "hover"))
+```
+
+```{r}
+library(DT)
+
+euro_data_tbl%>%
+  datatable()
+```
+
+```{r challenge}
+eu_data_full <- pop_data %>%
+  filter(continent == "Europe")
+
+euro_plot <- ggplot(eu_data_full, aes(x = year, y = lifeExp, group = year)) +
+  geom_violin()
+
+uk_data <- pop_data %>%
+  filter(country == "United Kingdom")
+
+uk_plot <- ggplot(uk_data, aes(x = year, y = lifeExp)) +
+  geom_point()
+
+ggarrange(euro_plot, uk_plot)
+```
+
